@@ -1,0 +1,51 @@
+<div class="main-container">
+    <div class="header w-100">
+        <div class="collection-header">
+            <h2>Tasks manager</h2>
+            <button class="add-task">+</button>
+        </div>
+        
+        <div class="cutom-hr"></div>
+    </div>
+    
+    <div class="container center">
+        <div class="row">
+          <div class="col-sm">
+            <b class="fs-3">ID</b>
+          </div>
+          <div class="col-sm">
+            <b class="fs-3">Title</b>
+          </div>
+          <div class="col-sm">
+            <b class="fs-3">Date</b>
+          </div>
+          <div class="col-sm">
+            <b class="fs-3">descreption</b>
+          </div>  
+          <div class="col-sm">
+            <b class="fs-3">Delete</b>
+          </div>              
+        </div>
+        <hr>
+        @for(task of Tasks; track task.id){
+            <div class="row">
+                <div class="col-sm">
+                  <b class="fs-3">ID</b>
+                </div>
+                <div class="col-sm">
+                  <b class="fs-3">Title</b>
+                </div>
+                <div class="col-sm">
+                  <b class="fs-3">Date</b>
+                </div>
+                <div class="col-sm">
+                  <b class="fs-3">descreption</b>
+                </div>  
+                <div class="col-sm">
+                  <b class="fs-3">Delete</b>
+                </div>              
+              </div>
+              <hr>
+        }
+      </div>
+</div>

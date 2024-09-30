@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -13,11 +13,17 @@ import { AuthService } from '../auth.service';
 })
 export class NavComponent {
 
-  constructor(public _authService:AuthService){ }
+  constructor(public _authService:AuthService, private _router:Router){ }
+
+  ngOnInit(): void {
+    if(this._authService.LookForToken() && this._router.getCurrentNavigation())
+      this._router.navigate(['/tasks']);
+  }
 
   LogOut(){
-    this._authService.Token = '';
-    localStorage.removeItem("UserToken");
+    console.log(this._router.getCurrentNavigation())
+    this._authService.LogOut();
     alert("logged out succefully");
+    this._router.navigate(['/login']);
   }
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { register } from 'node:module';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent{
 
   constructor(private _authService:AuthService, private _router:Router){ }
 
@@ -23,6 +24,6 @@ export class LoginComponent {
 
   Login(FormGroup:FormGroup){
     this._authService.Login(FormGroup);
-    this._router.navigate(['home']);
+    this._router.navigate(['tasks']);
   }
 }

@@ -31,7 +31,7 @@ export class RegisterComponent {
         alert("Registration succeful please login");
       },
       error: (err) =>{
-        alert("an error occuered: \n" + err)
+        alert("an error occuered: \n" + err.message + "\n email used or server down")
       }
     })
   }

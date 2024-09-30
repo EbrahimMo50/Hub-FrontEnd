@@ -1,0 +1,38 @@
+.main-container{
+    width: 98vw;
+    margin-top: 15vh;
+    margin-left: 2vw;
+}
+
+.cutom-hr{
+    min-width: 30%;
+    max-width: 30%;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 1px;
+}
+
+.collection-header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.add-task{
+    border: green 1px solid;
+    width: 40px;
+    height: 40px;
+    color: green;
+    border-radius: 8px;
+    transition: 0.5s;
+    font-size: large;
+}
+
+.add-task:hover{
+    background-color: green;
+    color: white;
+}
+
+.center{
+    margin-left: 10%;
+    margin-top: 32px;
+}
