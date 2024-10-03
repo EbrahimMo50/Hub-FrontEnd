@@ -2,7 +2,9 @@
     <div class="header w-100">
         <div class="collection-header">
             <h2>Tasks manager</h2>
-            <button class="add-task">+</button>
+            @if(this._authService.GetTokenDecoded()!.postPermission){
+              <button class="add-task" (click) = "CreateTask()">+</button>
+            }            
         </div>
         
         <div class="cutom-hr"></div>
@@ -22,30 +24,34 @@
           <div class="col-sm">
             <b class="fs-3">descreption</b>
           </div>  
-          <div class="col-sm">
-            <b class="fs-3">Delete</b>
-          </div>              
+          @if(this._authService.GetTokenDecoded()!.deletePermission){
+          <div class="col-sm"></div>        
+          }      
         </div>
         <hr>
-        @for(task of Tasks; track task.id){
-            <div class="row">
-                <div class="col-sm">
-                  <b class="fs-3">ID</b>
-                </div>
-                <div class="col-sm">
-                  <b class="fs-3">Title</b>
-                </div>
-                <div class="col-sm">
-                  <b class="fs-3">Date</b>
-                </div>
-                <div class="col-sm">
-                  <b class="fs-3">descreption</b>
-                </div>  
-                <div class="col-sm">
-                  <b class="fs-3">Delete</b>
-                </div>              
-              </div>
-              <hr>
+        @for(task of Tasks ; track task.id){
+          <div class="row">
+            <div class="col-sm">
+              <p class="fs-3">{{task.id}}</p>
+            </div>
+            <div class="col-sm">
+              <p class="fs-4">{{task.title}}</p>
+            </div>
+            <div class="col-sm">
+              <p class="fs-4">{{task.createdDate| date}}</p>
+            </div>
+            <div class="col-sm">
+              <p class="fs-5">{{task.description}}</p>
+            </div>  
+
+            @if(this._authService.GetTokenDecoded()!.deletePermission){
+              <div class="col-sm">
+                <button class="delete-btn" (click) = "DeleteTask(this.task)"><i class="fa-solid fa-xmark"></i></button>
+              </div>         
+            }
+
+          </div>
+          <hr>
         }
       </div>
 </div>

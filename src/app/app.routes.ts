@@ -4,12 +4,13 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TaskComponent } from './task/task.component';
 import { UsersComponent } from './users/users.component';
+import { taskGuard } from './task.guard';
 
 export const routes: Routes = [
-    {path : "", redirectTo: '/login',pathMatch:'full'},
+    {path : "", redirectTo: '/tasks',pathMatch:'full'},
     {path : "login",component: LoginComponent},
     {path : "register",component: RegisterComponent},
-    {path : "tasks",component: TaskComponent},
+    {path : "tasks",component: TaskComponent, canActivate: [taskGuard]},
     {path : "users",component: UsersComponent},
     {path : "**" , component: NotfoundComponent}
 ];

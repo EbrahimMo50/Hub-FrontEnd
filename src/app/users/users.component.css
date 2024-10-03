@@ -1,0 +1,60 @@
+.main-container{
+    width: 98vw;
+    margin-top: 15vh;
+    margin-left: 2vw;
+}
+.cutom-hr{
+    min-width: 30%;
+    max-width: 30%;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 1px;
+}
+.collection-header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.center{
+    margin-left: 10%;
+    margin-top: 32px;
+}
+.center-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup{
+    min-width: 50%;
+    max-width: 50%;    
+    min-height: 50%;
+    max-height: 50%;
+    position: fixed;
+    background-color: white;
+    margin-left: 25%;
+    border-radius: 8px;
+    border: 1px black solid;
+    visibility: hidden;
+    z-index: 2;
+    transition: 0.5s;
+}
+.shaded-overlay{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: -7%;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.add-group{
+    border: green 1px solid;
+    color: green;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: large;
+}
+.add-group:hover{
+    background-color: green;
+    color: white;
+}

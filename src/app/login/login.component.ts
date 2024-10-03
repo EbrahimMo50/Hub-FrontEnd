@@ -22,8 +22,8 @@ export class LoginComponent{
     password:new FormControl(null,[Validators.required])
   });
 
-  Login(FormGroup:FormGroup){
-    this._authService.Login(FormGroup);
-    this._router.navigate(['tasks']);
+  async Login(FormGroup:FormGroup){
+    await this._authService.Login(FormGroup);
+    this._router.navigate(['/tasks']);
   }
 }

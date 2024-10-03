@@ -36,3 +36,25 @@
     margin-left: 10%;
     margin-top: 32px;
 }
+.center-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn{
+    color: red;
+    border-radius: 8px;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    border: 1px red solid;
+    transition-duration: 0.5s;
+    width: 32px;
+    height: 32px;
+}
+
+.delete-btn:hover{
+    color:white;
+    background-color: red;
+}

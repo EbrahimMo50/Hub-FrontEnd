@@ -3,6 +3,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    //this is spsd to make the jwt decoder compitable and word
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "./out-tsc/app",
     "types": [
       "node"
