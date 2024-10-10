@@ -4,6 +4,9 @@ import { GroupCheckPipe } from '../group-check.pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from '../auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +14,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   imports: [
     GroupCheckPipe,
     MatMenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
@@ -23,6 +29,7 @@ export class UsersComponent implements OnInit{
   Users: any[] = [];
   FormGroup: FormGroup = new FormGroup({
     groupName: new FormControl(null,[Validators.required]),
+    users:new FormControl([]),
     get: new FormControl(null),
     post: new FormControl(null),
     put: new FormControl(null),
@@ -32,20 +39,27 @@ export class UsersComponent implements OnInit{
   constructor(private _service:UserService, public _authService:AuthService){ }
 
   ngOnInit(): void {
+    this.GetUsers();
+    this.GetGroups();
+  }
+
+  GetUsers(){
     this._service.GetUsers().subscribe((data)=>{
       this.Users = data.$values;
     });
+  }
+
+  GetGroups(){
     this._service.GetGroups().subscribe((data)=>{
       this.Groups = data.$values;
     });
-    
   }
 
-  OpenPopUp(){
+  TogglePopUp(){
     const shadOverLay = document.querySelector(".shaded-overlay") as HTMLElement;
     const popUpMenu = document.querySelector(".popup") as HTMLElement; 
-    shadOverLay.style.visibility = "visible";
-    popUpMenu.style.visibility = "visible";
+    shadOverLay.style.visibility = shadOverLay.style.visibility === "visible" ? "hidden" : "visible";
+    popUpMenu.style.visibility = popUpMenu.style.visibility === "visible" ? "hidden" : "visible";
   }
   
   ToggleMenu(Id:number){
@@ -56,30 +70,21 @@ export class UsersComponent implements OnInit{
   //keep data in sync and get all users again, higher traffic but data stays in sync
 
    this._service.JoinGroup(UserId,GroupId).subscribe(()=>{
-      this._service.GetUsers().subscribe((data)=>{
-      this.Users = data.$values;
-    })
+      this.GetUsers();
    });
-  }
-
-  ClosePopUp(){
-    const shadOverLay = document.querySelector(".shaded-overlay") as HTMLElement;
-    const popUpMenu = document.querySelector(".popup") as HTMLElement; 
-    shadOverLay.style.visibility = "hidden";
-    popUpMenu.style.visibility = "hidden";
   }
 
   AddGroup(FormGroup:FormGroup){
     this._service.CreateGroup(FormGroup).subscribe(()=>{
       alert("group created succefully");
-      this._service.GetGroups().subscribe((data)=>{
-        this.Groups = data.$values;
-      });
+      this._service.GetGroups().subscribe(()=>{
+        this.GetUsers();
+        this.GetGroups();
+      })
     })
   }
-
 }
 
 
 //TODO
-//add mass insertion using a filter and check box
+//add mass insertion using a filter and check box i can not bru this shit is diabolical

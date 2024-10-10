@@ -61,7 +61,8 @@ export class UserService {
 
   CreateGroup(FormGroup:FormGroup):Observable<any>{
     let name = FormGroup.value.groupName;
-
+    let usersId = FormGroup.value.users;
+    
     //the backend gets the name of the method the user will have not a boolean for the method not optimal should redesign and make 4 columns type bit for each method
     let validations = [];
     if(FormGroup.value.get == true)
@@ -73,7 +74,7 @@ export class UserService {
     if(FormGroup.value.delete == true)
       validations.push("delete");
 
-    return this._httpClient.post(this.URL + `/api/User/CreateGroup`, {name,validations} , {headers: {'Authorization':'Bearer ' + this._authService.Token}})    
+    return this._httpClient.post(this.URL + `/api/User/CreateGroup`, {name,validations,usersId} , {headers: {'Authorization':'Bearer ' + this._authService.Token}})    
     .pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {

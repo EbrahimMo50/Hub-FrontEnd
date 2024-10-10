@@ -1,7 +1,7 @@
 <div class="popup">
     <div class="header-popup">
         <h3>Add Group</h3>
-        <button class="close-popup-btn" (click) = "ClosePopUp()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="close-popup-btn" (click) = "TogglePopUp()"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <form [formGroup] = "FormGroup" (ngSubmit) = "AddGroup(FormGroup)">
 
@@ -9,6 +9,18 @@
             <label for="group-name" class="mt-5">Group name</label>
             <input formControlName = "groupName" type="text" class="form-control w-100 mb-5" id="group-name" placeholder="Enter group name">
         </div>
+
+        <mat-form-field class="my-dropdown-menu">
+            <mat-label>Users</mat-label>
+            <mat-select multiple formControlName="users">
+                @for(user of Users;track user.id){
+                    @if(user.id != _authService.GetTokenDecoded()!.id){
+                        <mat-option [value] = user.id>{{user.name}}</mat-option>
+                    }
+                    
+                }
+            </mat-select>
+          </mat-form-field>
 
         <div class="checkbox-group">
             <div>            
@@ -45,7 +57,7 @@
     <div class="header w-100">
         <div class="collection-header">
             <h2>Users manager</h2>          
-            <button class="add-group" (click) = "OpenPopUp()">Add Group</button>
+            <button class="add-group" (click) = "TogglePopUp()">Add Group</button>
         </div>
         
         <div class="cutom-hr"></div>
