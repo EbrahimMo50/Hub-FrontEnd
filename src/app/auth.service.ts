@@ -10,8 +10,10 @@ export interface CustomJwtPayload {
   nbf:number;
   exp:number;
   //custom claims
+  id:number;
   email:string;
   unique_name:string;
+  password:string;
   groupId:number;
   deletePermission:string;
   getPermission:string;
