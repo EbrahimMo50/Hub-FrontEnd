@@ -7,7 +7,7 @@
         <!-- an over write happened and the db got init twice thus making 2 admin groups 1, 4 because i reset the users table -->
         @if(_authService.GetTokenDecoded()!.groupId == 1 || _authService.GetTokenDecoded()!.groupId == 4){
         <li class="nav-item ">
-          <a class="nav-link fs-5 mx-4" routerLink = "/users">User Manager </a>
+          <a class="nav-link fs-5 mx-3" routerLink = "/users">User Manager </a>
         </li>
         }
         @if(_authService.GetTokenDecoded()!.getPermission){
@@ -30,9 +30,13 @@
           <a class="nav-link fs-5" routerLink = "/register">Register</a>
         </li>
       }
+      
       @if(_authService.Token){
+        <li>
+          <a class="nav-link fs-5 mx-3" routerLink = "/profile">Profile</a>
+        </li>
         <li class="nav-item ">
-          <button class="nav-link fs-5" (click) = "LogOut()">Logout</button>
+          <button class="nav-link fs-5 mx-3" (click) = "LogOut()">Logout</button>
         </li>
       }
 

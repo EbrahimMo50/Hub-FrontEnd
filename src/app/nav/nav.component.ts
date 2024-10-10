@@ -21,9 +21,7 @@ export class NavComponent {
   }
 
   LogOut(){
-    console.log(this._router.getCurrentNavigation())
-    this._authService.LogOut();
     alert("logged out succefully");
-    this._router.navigate(['/login']);
+    this._authService.LogOut();
   }
 }

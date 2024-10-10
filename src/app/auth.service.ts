@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import * as JWT from 'jwt-decode'; //why when i imported all it worked? missing method or name mix up issue occuered ig
+import { Router } from '@angular/router';
 
 export interface CustomJwtPayload {
   iat:number;
@@ -26,7 +27,7 @@ export class AuthService {
   Token:string = "";
   URL:string = "https://localhost:7084";
 
-  constructor(private _httpClient:HttpClient) { }
+  constructor(private _httpClient:HttpClient, private _router:Router) { }
 
   //removed the FAF to navigate the user when the trip finishes
   async Login(ForgmGroup: FormGroup): Promise<boolean> {
@@ -57,6 +58,7 @@ export class AuthService {
   LogOut(){
     this.Token = '';
     localStorage.removeItem("UserToken");
+    this._router.navigate(['/login']);
   }
 
   //method to look for the token to see if the user had session

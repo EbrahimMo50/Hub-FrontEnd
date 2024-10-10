@@ -12,5 +12,4 @@ export class GroupCheckPipe implements PipeTransform {
     else
       return value.name;
   }
-
 }

@@ -23,6 +23,8 @@
     justify-content: center;
     align-items: center;
 }
+
+/* pop up section */
 .popup{
     min-width: 50%;
     max-width: 50%;    
@@ -35,8 +37,21 @@
     border: 1px black solid;
     visibility: hidden;
     z-index: 2;
-    transition: 0.5s;
+    padding: 24px;
 }
+.header-popup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.close-popup-btn{
+    border: none;
+    background-color: rgba(218, 218, 218, 1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
 .shaded-overlay{
     min-width: 100vw;
     min-height: 100vh;
@@ -45,8 +60,15 @@
     background-color: rgba(0, 0, 0, 0.2);
     margin-top: -7%;
     visibility: hidden;
-    transition: 0.5s;
 }
+
+.checkbox-group{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+/* end of popup section */
+
 .add-group{
     border: green 1px solid;
     color: green;
@@ -57,4 +79,29 @@
 .add-group:hover{
     background-color: green;
     color: white;
+}
+.role-btn{
+    border-radius: 8px;
+    font-size: larger;
+    position: relative;
+    width: 100%;
+}
+.role-menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    max-width: 10%;
+    border: 0px solid white;
+    visibility:visible;
+    z-index: 1;
+}
+.role-menu > button{
+    border: none;
+    border-radius: 8px;
+    font-size: large;
+    min-width: 125%;
+    width: 125%;
+    background-color: rgba(218, 218, 218, 1);
+    margin-top: 4px;
 }

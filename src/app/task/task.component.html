@@ -1,9 +1,58 @@
+<div class="popup">
+  <div class="header-popup">
+      <h3>Add Task</h3>
+      <button class="close-popup-btn" (click) = "ClosePopUp()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <form [formGroup] = "FormGroup" (ngSubmit) = "CreateTask(FormGroup)">
+
+      <div class="form-outline mb-4">
+          <label for="Title" class="mt-5">Title</label>
+          <input formControlName = "title" type="text" class="form-control w-100 mb-5" id="titleField" placeholder="Enter title">
+      </div>
+      <div class="form-outline mb-4">
+          <label for="description" class="mt-5">Descreption</label>
+          <input formControlName = "description" type="text" class="form-control w-100 mb-5" id="description" placeholder="Enter description">
+      </div>
+
+      <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" [disabled] = "FormGroup.invalid">Submit</button>
+      </div>
+  </form>
+</div>
+
+<div class="update-popup">
+  <div class="header-popup">
+      <h3>Update Task</h3>
+      <button class="close-popup-btn" (click) = "CloseUpdatePopUp()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <form [formGroup] = "UpdateFormGroup" (ngSubmit) = "UpdateTask(UpdateFormGroup)">
+      <div class="form-outline mb-4">
+          <label for="Title" class="mt-5">Id</label>
+          <p class="form-control w-100 mb-5" id="idField" placeholder="Id"> {{this.UpdatedTaskId}} </p>
+      </div>
+      <div class="form-outline mb-4">
+          <label for="Title" class="mt-5">Title</label>
+          <input formControlName = "title" type="text" class="form-control w-100 mb-5" id="updateTitleField" placeholder="Enter title">
+      </div>
+      <div class="form-outline mb-4">
+          <label for="description" class="mt-5">Descreption</label>
+          <input formControlName = "description" type="text" class="form-control w-100 mb-5" id="updateDescription" placeholder="Enter description">
+      </div>
+
+      <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" [disabled] = "UpdateFormGroup.invalid">Submit</button>
+      </div>
+  </form>
+</div>
+
+<div class="shaded-overlay"></div>
+
 <div class="main-container">
     <div class="header w-100">
         <div class="collection-header">
             <h2>Tasks manager</h2>
             @if(this._authService.GetTokenDecoded()!.postPermission){
-              <button class="add-task" (click) = "CreateTask()">+</button>
+              <button class="add-task" (click) = "OpenPopUp()">+</button>
             }            
         </div>
         
@@ -44,12 +93,16 @@
               <p class="fs-5">{{task.description}}</p>
             </div>  
 
-            @if(this._authService.GetTokenDecoded()!.deletePermission){
+            @if(this._authService.GetTokenDecoded()!.deletePermission || this._authService.GetTokenDecoded()!.putPermission){
               <div class="col-sm">
-                <button class="delete-btn" (click) = "DeleteTask(this.task)"><i class="fa-solid fa-xmark"></i></button>
+                @if(this._authService.GetTokenDecoded()!.deletePermission){
+                  <button class="delete-btn my-btn" (click) = "DeleteTask(this.task)"><i class="fa-solid fa-xmark"></i></button> 
+                }
+                @if(this._authService.GetTokenDecoded()!.putPermission){
+                <button class="edit-btn my-btn" (click) = "OpenUpdatePopUp(this.task.id)"><i class="fa-solid fa-edit"></i></button>
+              }
               </div>         
             }
-
           </div>
           <hr>
         }

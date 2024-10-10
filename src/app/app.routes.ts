@@ -5,12 +5,14 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { TaskComponent } from './task/task.component';
 import { UsersComponent } from './users/users.component';
 import { taskGuard } from './task.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
-    {path : "", redirectTo: '/tasks',pathMatch:'full'},
+    {path : "", redirectTo: '/profile',pathMatch:'full'},
     {path : "login",component: LoginComponent},
     {path : "register",component: RegisterComponent},
     {path : "tasks",component: TaskComponent, canActivate: [taskGuard]},
     {path : "users",component: UsersComponent},
-    {path : "**" , component: NotfoundComponent}
+    {path : "profile",component: ProfileComponent},
+    {path : "**" , component: NotfoundComponent},
 ];
