@@ -3,7 +3,7 @@ import { UserService } from '../user.service';
 import { GroupCheckPipe } from '../group-check.pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from '../auth.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
@@ -18,6 +18,7 @@ import { MatOptionModule } from '@angular/material/core';
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
+    FormsModule
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
@@ -27,6 +28,8 @@ export class UsersComponent implements OnInit{
   isMenuOpen: { [key: number]: boolean } = {};   //a menu map for each user id and a bool for it 
   Groups: any[] = [];
   Users: any[] = [];
+  FilteredUsers: any[] = [];
+
   FormGroup: FormGroup = new FormGroup({
     groupName: new FormControl(null,[Validators.required]),
     users:new FormControl([]),
@@ -36,7 +39,7 @@ export class UsersComponent implements OnInit{
     delete: new FormControl(null),
   });
 
-  constructor(private _service:UserService, public _authService:AuthService){ }
+  constructor(private _service:UserService, public _authService:AuthService) { }
 
   ngOnInit(): void {
     this.GetUsers();
@@ -46,6 +49,7 @@ export class UsersComponent implements OnInit{
   GetUsers(){
     this._service.GetUsers().subscribe((data)=>{
       this.Users = data.$values;
+      this.FilteredUsers = this.Users;
     });
   }
 
@@ -53,6 +57,10 @@ export class UsersComponent implements OnInit{
     this._service.GetGroups().subscribe((data)=>{
       this.Groups = data.$values;
     });
+  }
+
+  FilterUsers(event:any){
+      this.FilteredUsers = this.Users.filter(x => x.name.toLowerCase().includes(event.target!.value.toLowerCase()));
   }
 
   TogglePopUp(){

@@ -87,7 +87,7 @@ export class AuthService {
       return JWT.jwtDecode<CustomJwtPayload>(this.Token);
     }
     catch(e){
-      alert(e);
+      console.error(e);
       return null;
     }
   }
