@@ -54,7 +54,6 @@ export class TaskService {
   }
 
   UpdateTask(title:string,description:string,Id:number){
-    console.log("blayyyyttsyha")
     return this._httpClient.put(this.URL + `/api/tasks/UpdateTask?Id=${Id}`, {title,description} ,{headers: {'Authorization':'Bearer ' + this._authService.Token}})    
     .pipe(
       catchError((error: HttpErrorResponse) => {

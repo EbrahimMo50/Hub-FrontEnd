@@ -6,6 +6,7 @@ import { TaskComponent } from './task/task.component';
 import { UsersComponent } from './users/users.component';
 import { taskGuard } from './task.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { GroupComponent } from './group/group.component';
 
 export const routes: Routes = [
     {path : "", redirectTo: '/profile',pathMatch:'full'},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path : "tasks",component: TaskComponent, canActivate: [taskGuard]},
     {path : "users",component: UsersComponent},
     {path : "profile",component: ProfileComponent},
+    {path : "groups" ,component: GroupComponent},
     {path : "**" , component: NotfoundComponent},
 ];

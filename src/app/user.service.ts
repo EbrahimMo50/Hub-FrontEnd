@@ -74,7 +74,7 @@ export class UserService {
     if(FormGroup.value.delete == true)
       validations.push("delete");
 
-    return this._httpClient.post(this.URL + `/api/User/CreateGroup`, {name,validations,usersId} , {headers: {'Authorization':'Bearer ' + this._authService.Token}})    
+    return this._httpClient.post(this.URL + `/api/Group/CreateGroup`, {name,validations,usersId} , {headers: {'Authorization':'Bearer ' + this._authService.Token}})    
     .pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {

@@ -1,0 +1,129 @@
+/* pop up section */
+.update-popup{
+    min-width: 50%;
+    max-width: 50%;    
+    min-height: 70%;
+    max-height: 70%;
+    position: fixed;
+    background-color: white;
+    margin-left: 25%;
+    border-radius: 8px;
+    border: 1px black solid;
+    visibility: hidden;
+    z-index: 2;
+    padding: 24px;
+}
+.popup{
+    min-width: 50%;
+    max-width: 50%;    
+    min-height: 50%;
+    max-height: 50%;
+    position: fixed;
+    background-color: white;
+    margin-left: 25%;
+    border-radius: 8px;
+    border: 1px black solid;
+    visibility: hidden;
+    z-index: 2;
+    padding: 24px;
+}
+.header-popup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.close-popup-btn{
+    border: none;
+    background-color: rgba(218, 218, 218, 1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.shaded-overlay{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: -7%;
+    visibility: hidden;
+}
+
+.checkbox-group{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+/* end of popup section */
+
+.main-container{
+    width: 98vw;
+    margin-top: 15vh;
+    margin-left: 2vw;
+}
+
+.cutom-hr{
+    min-width: 30%;
+    max-width: 30%;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 1px;
+}
+
+.collection-header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.add-Group{
+    border: green 1px solid;
+    width: 40px;
+    height: 40px;
+    color: green;
+    border-radius: 8px;
+    transition: 0.5s;
+    font-size: large;
+}
+
+.add-Group:hover{
+    background-color: green;
+    color: white;
+}
+
+.center{
+    margin-left: 10%;
+    margin-top: 32px;
+}
+.center-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-btn{
+    justify-content: center;
+    border-radius: 8px;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    transition-duration: 0.5s;
+    width: 32px;
+    height: 32px;
+}
+.delete-btn{
+    color: red;
+    border: 1px red solid;
+    margin-right: 8px;
+}
+.edit-btn{
+    color: rgb(255, 145, 0);
+    border: rgb(255, 145, 0) solid 1px;
+}
+.delete-btn:hover{
+    color:white;
+    background-color: red;
+}
+.edit-btn:hover{
+    color: white;
+    background-color: rgb(255, 145, 0);
+}
