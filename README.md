@@ -7,6 +7,14 @@ The project is created to manifest the back and give an easy interface
 ## Link to back end repo
 https://github.com/EbrahimMo50/User-managment-system
 
+## Project cuurent state
+the project is stable and have all the functionality to be published some bugs and features need to be added and fixed for smother user experience 
+the group component need to have an addition option
+the open and close popup should be merged to toggle popup with diffrent logic 
+passwords need to be masked because they are transfered without encryption over the network
+some security issues are risen and need to be taken care of to avoid breach attacks on database
+the services should be further refined and migrate the group addition from the user service
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
